@@ -51,7 +51,7 @@ def main():
     os.remove(gdal_src_zip)
 
     # Repackage the wheel
-    pack(gdal_wheel_dir, dest_dir=".", build_number=f"dev")
+    pack(gdal_wheel_dir, dest_dir=".", build_number=None)
     shutil.rmtree(gdal_wheel_dir)
 
 
