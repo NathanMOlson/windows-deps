@@ -32,6 +32,7 @@ gdal_alg.h
 gdal_alg_priv.h
 gdal_csv.h
 gdal_frmts.h
+gdal_fwd.h
 gdal_mdreader.h
 gdal_pam.h
 gdal_priv.h
