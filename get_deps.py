@@ -51,6 +51,11 @@ def main():
                 zip.extract(filename, ".")
                 os.rename(filename, os.path.join(include_dir, filename.split("/")[-1]))
 
+        # Special handling for gdal_version.h
+        filename = os.path.join(gdal_wheel_dir, "gcore", "gdal_version.h.in")
+        zip.extract(filename, ".")
+        os.rename(filename, os.path.join(include_dir, "gdal_version.h"))
+
     os.remove(gdal_src_zip)
 
     # Repackage the wheel
