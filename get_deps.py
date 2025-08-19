@@ -42,11 +42,14 @@ def main():
     print("...Complete.")
 
     # Add the include files into the wheel directory
+    include_dir = os.path.join(gdal_wheel_dir, "osgeo", "include", "gdal")
+    os.makedirs(include_dir)
     with ZipFile(gdal_src_zip, 'r') as zip:
         file_list = zip.namelist()
         for filename in file_list:
             if filename.split("/")[-1] in include_filenames:
-                zip.extract(filename, os.path.join(gdal_wheel_dir, "osgeo", "include", "gdal", filename.split("/")[-1]))
+                zip.extract(filename, ".")
+                os.rename(filename, os.path.join(include_dir, filename.split("/")[-1]))
 
     os.remove(gdal_src_zip)
 
