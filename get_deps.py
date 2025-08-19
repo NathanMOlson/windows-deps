@@ -56,6 +56,9 @@ def main():
         zip.extract(filename, ".")
         os.rename(filename, os.path.join(include_dir, "gdal_version.h"))
 
+        # Special handling for cpl_config.h
+        shutil.copyfile("cpl_config.h", os.path.join(include_dir, "cpl_config.h"))
+
     os.remove(gdal_src_zip)
 
     # Repackage the wheel
