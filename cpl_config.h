@@ -47,7 +47,7 @@
 /* #undef WORDS_BIGENDIAN */
 
 /* Define to name of 64bit stat structure */
-#define VSI_STAT64_T stat64
+#define VSI_STAT64_T stat
 
 /* Define to 1 if you have the `std::isnan' function. */
 #define HAVE_STD_IS_NAN 1
