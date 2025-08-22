@@ -1,7 +1,7 @@
 name: Build Windows Dependencies
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   windows:
