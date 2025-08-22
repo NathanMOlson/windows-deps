@@ -2,6 +2,7 @@
     "dependencies": [
         "eigen3",
         "suitesparse",
+        "suitesparse-config",
         "suitesparse-spqr",
         "lapack",
         "tbb",
@@ -32,6 +33,7 @@
     "overrides": [
        { "name": "eigen3", "version": "3.4.0#5" },
        { "name": "suitesparse", "version": "5.8.0" },
+       { "name": "suitesparse-config", "version": "5.8.0" },
        { "name": "suitesparse-spqr", "version": "4.3.4#0" },
        { "name": "lapack", "version": "2023-06-10#2" },
        { "name": "tbb", "version": "2022.1.0" },
