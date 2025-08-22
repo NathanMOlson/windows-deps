@@ -24,7 +24,8 @@
         "boost-program-options",
         "libgeotiff",
         "cgal",
-        "yasm-tool"
+        "yasm-tool",
+        "metis"
     ],
     "builtin-baseline": "6ecbbbdf31cba47aafa7cf6189b1e73e10ac61f8",
     "overrides": [
@@ -52,6 +53,7 @@
        { "name": "boost-program-options", "version": "1.88.0" },
        { "name": "libgeotiff", "version": "1.7.4" },
        { "name": "cgal", "version": "6.0.1" },
-       { "name": "yasm-tool", "version": "2021-12-14" }
+       { "name": "yasm-tool", "version": "2021-12-14" },
+       { "name": "metis", "version": "2022-07-27#1" }
     ]
 }
