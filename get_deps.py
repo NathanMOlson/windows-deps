@@ -9,6 +9,7 @@ from wheel.cli.pack import pack
 gdal_wheel_url = "https://github.com/cgohlke/geospatial-wheels/releases/download/v2025.7.4/gdal-3.11.1-cp312-cp312-win_amd64.whl"
 fiona_wheel_url = "https://github.com/cgohlke/geospatial-wheels/releases/download/v2025.7.4/fiona-1.10.1-cp312-cp312-win_amd64.whl"
 rasterio_wheel_url = "https://github.com/cgohlke/geospatial-wheels/releases/download/v2025.7.4/rasterio-1.4.3-cp312-cp312-win_amd64.whl"
+python_zip = "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip"
 
 def main():
     # Fiona and rasterio are easy, just download the wheels
@@ -39,7 +40,7 @@ def main():
     gdal_src_url = f"https://github.com/OSGeo/gdal/archive/refs/tags/v{gdal_version}.zip"
     gdal_src_zip = gdal_src_url.split('/')[-1]
     urllib.request.urlretrieve(gdal_src_url, gdal_src_zip)
-    print("...Complete.")
+    print("...Complete. Adding header files...")
 
     # Add the include files into the wheel directory
     include_dir = os.path.join(gdal_wheel_dir, "osgeo", "include", "gdal")
@@ -64,6 +65,20 @@ def main():
     # Repackage the wheel
     pack(gdal_wheel_dir, dest_dir=".", build_number=None)
     shutil.rmtree(gdal_wheel_dir)
+
+
+    print("...Complete. Downloading python zip...")
+    python_zip_filename = python_zip.split('/')[-1]
+    urllib.request.urlretrieve(python_zip, python_zip_filename)
+    print("...Complete. Removing python312._pth...")
+    with ZipFile(python_zip_filename, 'r') as zin:
+        with ZipFile(python_zip_filename[:-4] + "-less-pth.zip", 'w') as zout:
+            for item in zin.infolist():
+                if item.filename != "python312._pth":
+                    buffer = zin.read(item.filename)
+                    zout.writestr(item, buffer)
+    os.remove(python_zip_filename)
+    print("...Complete.")
 
 
 if __name__ == "__main__":
