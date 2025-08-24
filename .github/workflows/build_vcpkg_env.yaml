@@ -1,7 +1,7 @@
 name: Build Windows Dependencies
 
 on:
-  push:
+  pull_request:
 
 jobs:
   windows:
